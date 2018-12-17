@@ -82,6 +82,38 @@ a {
 		color:#fff;
 	}
 </style>
+	 <script type="text/javascript">
+
+
+    $(window).load(function(){
+      
+function $count_how_many_syllables() {
+    $("[name=textCount"]").keyup(function () {
+        var $content = this.value;
+        var word = $content;
+        word = word.toLowerCase();
+        if (word.length <= 3) {
+            word = 1;
+        }
+        if (word.length == 0) {
+            return 0;
+        }
+        word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+        word = word.replace(/^y/, '');
+        word = word.match(/[aeiouy]{1,2}/g).length;
+        var $syllable_count = word;
+
+        var $result = $syllable_count;
+        $("[id=syllableCount]").val($result);
+    });
+}
+$(function () {
+    $count_how_many_syllables();
+});
+
+    });
+
+</script>
 </head>
 
 <body><div align="center">
@@ -90,9 +122,9 @@ a {
 	<h1>How Many Syllables - Syllables Counter</h1>
 </div>
 <div class="container">
-	
+
 	<textarea name="textCount" id="textCount" cols="30" rows="8"></textarea>
-	<p>You have <span id="wordCount">0 words</span> and <span id="charCount">0 characters</span></p>
+	<p>You have <span id="syllableCount">0 syllables</span> and <span id="wordCount">0 words</span> and <span id="charCount">0 characters</span></p>
 </div>
 <script src="/jquery-1.12.0.min.js"></script>
 <script>
