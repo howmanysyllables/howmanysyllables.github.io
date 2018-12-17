@@ -103,7 +103,7 @@ function $count_how_many_syllables() {
         if (word.length == 0) {
             return 0;
         }
-        word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+        word = word.toString().replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
         word = word.replace(/^y/, '');
         word = word.match(/[aeiouy]{1,2}/g).length;
         var $syllable_count = word;
