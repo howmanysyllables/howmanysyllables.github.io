@@ -91,9 +91,9 @@ a {
 
 
     $(window).load(function(){
-      
-function $count_how_many_syllables() {
-    $("[id=textCount]").keyup(function () {
+	    
+   function $count_how_many_syllables() {
+    $("[name=textCount]").keyup(function () {
         var $content = this.value;
         var word = $content;
         word = word.toLowerCase();
@@ -103,21 +103,19 @@ function $count_how_many_syllables() {
         if (word.length == 0) {
             return 0;
         }
-        word = word.toString().replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
+        word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, '');
         word = word.replace(/^y/, '');
         word = word.match(/[aeiouy]{1,2}/g).length;
         var $syllable_count = word;
 
         var $result = $syllable_count;
-        $("[id=syllableCount]").val($result);
+        $("[id=syllableCount]").html($result);
     });
 }
 $(function () {
     $count_how_many_syllables();
 });
-
-    });
-
+    }
 </script>
 </head>
 
